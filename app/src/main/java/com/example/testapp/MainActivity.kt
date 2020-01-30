@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 var finalString = ""
                 var isConsonant = false
                 var isVowel = false
-                var subLetter  = ""
                 var i = 0
                 while (i < textString.length){
                     if (textString.get(i) == ' '){
@@ -40,11 +39,9 @@ class MainActivity : AppCompatActivity() {
                         i++
                         continue
                     }
-                    var availableString = ""
                     isConsonant = false
                     isVowel = false
-
-                    availableString = "${textString.getOrNull(i) ?: ""}${textString.getOrNull(i+1) ?: ""}"
+                    var availableString = "${textString.getOrNull(i) ?: ""}${textString.getOrNull(i+1) ?: ""}"
                     while (availableString.length > 0){
                         if (unicodeHalfConsonantMap.containsKey(availableString)){
                             isConsonant = true
@@ -92,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                                 finalString += unicodeHalfConsonantMap.get(availableString)
                             }
                         }
-                    }else{
+                    }else if(isVowel){
                         finalString += unicodeVowelMap.get(availableString)
                     }
                 }
